@@ -1,0 +1,13 @@
+#!/bin/bash
+
+SERVICE=communities_qc
+DEPLOY_DIR=/kb/deployment
+SERVICE_DIR=$DEPLOY_DIR/services/$SERVICE
+LIB_DIR=$SERVICE_DIR/lib
+KB_BIN=/kb/runtime/bin
+
+export PATH=$KB_BIN:$DEPLOY_DIR/bin:$SERVICE_DIR:$LIB_DIR:$PATH
+
+$SERVICE_DIR/stop_service
+nohup perl -I $LIB_DIR $SERVICE_DIR/dancer_api.pl &
+echo $! > $SERVICE_DIR/service.pid

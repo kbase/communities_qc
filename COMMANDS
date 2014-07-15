@@ -1,0 +1,3 @@
+#group-name	qc	Metagenomic Sequence QC
+#command-set	scripts/(.*).py	qc
+#command-set	scripts/(.*).pl	qc
